@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Web",
+        "aliases": ["Web Developer"]
+    },
+    {
+        "name": "Front-End",
+        "aliases": ["Front End Developer"]
+    },
+    {
+        "name": "Back-End",
+        "aliases": ["Back End Developer"]
+    },
+    {
+        "name": "Software",
+        "aliases": ["Software Developer"]
+    },
+    {
+        "name": "Junior",
+        "aliases": ["Junior Developer"]
+    },
+    {
+        "name": "Senior",
+        "aliases": ["Senior Developer"]
+    },
+    {
+        "name": "Mobile",
+        "aliases": ["Mobile Developer"]
+    }
+]

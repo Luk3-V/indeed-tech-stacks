@@ -1,0 +1,10 @@
+[
+    {
+        "name": "Redux",
+        "aliases": ["Redux Toolkit"]
+    },
+    {
+        "name": "Jest",
+        "aliases": ["JestJS", "Jest JS", "Jest.js"]
+    }
+]

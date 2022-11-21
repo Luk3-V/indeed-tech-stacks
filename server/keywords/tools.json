@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Node",
+        "aliases": ["NodeJS", "Node JS", "Node.js"]
+    },
+    {
+        "name": "MongoDB",
+        "aliases": ["Mongo", "Mongo DB"]
+    },
+    {
+        "name": "SQLite",
+        "aliases": []
+    },
+    {
+        "name": "Webpack",
+        "aliases": []
+    },
+    {
+        "name": "Git",
+        "aliases": ["GitHub"]
+    },
+    {
+        "name": "Wordpress",
+        "aliases": []
+    },
+    {
+        "name": "Docker",
+        "aliases": []
+    }
+]

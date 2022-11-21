@@ -1,0 +1,99 @@
+[
+    {
+        "name": "Django",
+        "aliases": ["Django"],
+        "language": "Python"
+    },
+    {
+        "name": "Ruby on Rails",
+        "aliases": ["Ruby on Rails"],
+        "language": "Ruby"
+    },
+    {
+        "name": "Laravel",
+        "aliases": ["Laravel"],
+        "language": "PHP"
+    },
+    {
+        "name": "Symfony",
+        "aliases": ["Symfony"],
+        "language": "PHP"
+    },
+    {
+        "name": "React",
+        "aliases": ["ReactJS"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Angular",
+        "aliases": ["AngularJS"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Ember",
+        "aliases": ["Ember JS"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Knockout",
+        "aliases": ["Knockout JS"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "React Native",
+        "aliases": ["React Native"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Vue",
+        "aliases": ["Vue"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Svelte",
+        "aliases": ["Svelte"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Gatsby",
+        "aliases": ["Gatsby"],
+        "language": "JavaScript"
+    },
+    {
+        "name": ".Net",
+        "aliases": [".Net"],
+        "language": "C#"
+    },
+    {
+        "name": "Flutter",
+        "aliases": ["Flutter"],
+        "language": "Dart"
+    },
+    
+
+
+    {
+        "name": "Next",
+        "aliases": ["NextJS", "Next.js"],
+        "language": "JavaScript",
+        "for": "React"
+    },
+    {
+        "name": "Nuxt",
+        "aliases": ["NuxtJS", "Nuxt.js"],
+        "language": "JavaScript",
+        "for": "Vue"
+    },
+    {
+        "name": "SvelteKit",
+        "aliases": ["SvelteKit","Svelte Kit"],
+        "language": "JavaScript",
+        "for": "Svelte"
+    },
+    {
+        "name": "Express",
+        "aliases": ["ExpressJS"],
+        "language": "JavaScript",
+        "for": "Node"
+    }
+]

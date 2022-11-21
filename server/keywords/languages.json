@@ -1,0 +1,75 @@
+[
+    {
+        "name": "JavaScript",
+        "aliases": ["JS"]
+    },
+    {
+        "name": "TypeScript",
+        "aliases": ["TS"]
+    },
+    {
+        "name": "JSX",
+        "aliases": ["JavaScript XML", "JavaScript Syntax Extension"]
+    },
+
+    {
+        "name": "HTML",
+        "aliases": ["HTML5", "ES6"]
+    },
+    {
+        "name": "CSS",
+        "aliases": ["CSS3"]
+    },
+    {
+        "name": "jQuery",
+        "aliases": []
+    },
+    {
+        "name": "MySQL",
+        "aliases": ["SQL"]
+    },
+    {
+        "name": "PHP",
+        "aliases": []
+    },
+    {
+        "name": "Python",
+        "aliases": []
+    },
+    {
+        "name": "Java",
+        "aliases": []
+    },
+    {
+        "name": "C++",
+        "aliases": []
+    },
+    {
+        "name": "C#",
+        "aliases": []
+    },
+    {
+        "name": "Ruby",
+        "aliases": []
+    },
+    {
+        "name": "Rust",
+        "aliases": []
+    },
+    {
+        "name": "Objective-C",
+        "aliases": ["Objective C"]
+    },
+    {
+        "name": "Go",
+        "aliases": ["Golang"]
+    },
+    {
+        "name": "Haskell",
+        "aliases": []
+    },
+    {
+        "name": "Scala",
+        "aliases": []
+    }
+]

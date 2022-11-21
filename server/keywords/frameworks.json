@@ -1,0 +1,255 @@
+[
+    {
+        "name": "Django",
+        "aliases": [],
+        "language": "Python"
+    },
+    {
+        "name": "Flask",
+        "aliases": [],
+        "language": "Python"
+    },
+    {
+        "name": "TurboGears",
+        "aliases": [],
+        "language": "Python"
+    },
+    {
+        "name": "PyTorch",
+        "aliases": [],
+        "language": "Python"
+    },
+    {
+        "name": "Ruby on Rails",
+        "aliases": ["Rails", "RoR"],
+        "language": "Ruby"
+    },
+    {
+        "name": "Garden",
+        "aliases": [],
+        "language": "Ruby"
+    },
+    {
+        "name": "Spring",
+        "aliases": [],
+        "language": "Java"
+    },
+    {
+        "name": "Play",
+        "aliases": [],
+        "language": "Java"
+    },
+    {
+        "name": "Spark",
+        "aliases": [],
+        "language": "Java"
+    },
+    {
+        "name": "Wicket",
+        "aliases": [],
+        "language": "Java"
+    },
+    {
+        "name": "Javalin",
+        "aliases": [],
+        "language": "Java"
+    },
+    {
+        "name": "Netty",
+        "aliases": [],
+        "language": "Java"
+    },
+    {
+        "name": "Reactor",
+        "aliases": [],
+        "language": "Java"
+    },
+    {
+        "name": "Nueral Network Libraries",
+        "aliases": ["NNL"],
+        "language": "Java"
+    },
+    {
+        "name": "Laravel",
+        "aliases": [],
+        "language": "PHP"
+    },
+    {
+        "name": "CakePHP",
+        "aliases": [],
+        "language": "PHP"
+    },
+    {
+        "name": "Symfony",
+        "aliases": [],
+        "language": "PHP"
+    },
+    {
+        "name": "Yii",
+        "aliases": [],
+        "language": "PHP"
+    },
+    {
+        "name": "Zikula",
+        "aliases": [],
+        "language": "PHP"
+    },
+    {
+        "name": "Lumen",
+        "aliases": [],
+        "language": "PHP"
+    },
+    {
+        "name": "CodeIgniter",
+        "aliases": [],
+        "language": "PHP"
+    },
+    {
+        "name": "React",
+        "aliases": ["ReactJS", "React JS", "React.js"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Angular",
+        "aliases": ["AngularJS", "Angular JS", "Angular.js"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Knockout",
+        "aliases": ["KnockoutJS", "Knockout JS", "Knockout.js"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Ember",
+        "aliases": ["EmberJS", "Ember JS", "Ember.js"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Meteor",
+        "aliases": ["MeteorJS", "Meteor JS", "Meteor.js"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "React Native",
+        "aliases": [],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Vue",
+        "aliases": ["VueJS", "Vue JS", "Vue.js"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Svelte",
+        "aliases": ["SvelteJS", "Svelte JS", "Svelte.js"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Alpine",
+        "aliases": ["AlpineJS", "Alpine JS", "Alpine.js"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Gatsby",
+        "aliases": ["GatsbyJS", "Gatsby JS", "Gatsby.js"],
+        "language": "JavaScript"
+    },
+    {
+        "name": "jQuery Mobile",
+        "aliases": [],
+        "language": "JavaScript"
+    },
+    {
+        "name": "NativeScript",
+        "aliases": [],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Mojito",
+        "aliases": [],
+        "language": "JavaScript"
+    },
+    {
+        "name": "Pheonix",
+        "aliases": ["Pheonix Framework"],
+        "language": "Elixir"
+    },
+    {
+        "name": "Aeron",
+        "aliases": [],
+        "language": "C++"
+    },
+    {
+        "name": "Apache MXNet",
+        "aliases": ["MXNet"],
+        "language": "C++"
+    },
+    {
+        "name": "TensorFlow",
+        "aliases": [],
+        "language": "C++"
+    },
+    {
+        "name": "Core Data",
+        "aliases": [],
+        "language": "Objective-C"
+    },
+    {
+        "name": "Xamarin",
+        "aliases": [],
+        "language": "C#"
+    },
+    {
+        "name": ".Net",
+        "aliases": ["NET"],
+        "language": "C#"
+    },
+    {
+        "name": "ML.NET",
+        "aliases": ["MLNET", "ML NET"],
+        "language": "C#"
+    },
+    {
+        "name": "Infer.NET",
+        "aliases": ["InferNET", "Infer NET"],
+        "language": "C#"
+    },
+    {
+        "name": "Flutter",
+        "aliases": [],
+        "language": "Dart"
+    },
+
+
+    
+    {
+        "name": "Next",
+        "aliases": ["NextJS", "Next JS", "Next.js"],
+        "language": "JavaScript",
+        "for": "React"
+    },
+    {
+        "name": "Nuxt",
+        "aliases": ["NuxtJS", "Nuxt JS", "Nuxt.js"],
+        "language": "JavaScript",
+        "for": "Vue"
+    },
+    {
+        "name": "SvelteKit",
+        "aliases": ["Svelte Kit"],
+        "language": "JavaScript",
+        "for": "Svelte"
+    },
+    {
+        "name": "Express",
+        "aliases": ["ExpressJS", "Express JS", "Express.js"],
+        "language": "JavaScript",
+        "for": "Node"
+    },
+    {
+        "name": "Grails",
+        "aliases": [],
+        "language": "Java",
+        "for": "Groovy"
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Node.js",
+        "aliases": ["NodeJS"]
+    },
+    {
+        "name": "MongoDB",
+        "aliases": ["MongoDB"]
+    },
+    {
+        "name": "SQLite",
+        "aliases": ["SQLite"]
+    },
+    {
+        "name": "Webpack",
+        "aliases": ["Webpack"]
+    },
+    {
+        "name": "Wordpress",
+        "aliases": ["Wordpress"]
+    },
+    {
+        "name": "Docker",
+        "aliases": ["Docker developer"]
+    }
+]

@@ -17,6 +17,7 @@ function getJobCount(params) {
 		if(config["verbose"]) console.log("\u2714" , url.href);
 		let parser = new PageParser(content);
 		let { jobCount } = parser.getContent();
+		console.log(jobCount);
 		return page.closePage().then(() => parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",","")));
 	});
 }

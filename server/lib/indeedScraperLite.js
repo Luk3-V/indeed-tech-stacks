@@ -33,7 +33,7 @@ async function getData(params) {
 
 async function getCount(word, params) {
     let count = 0;
-
+    console.log(word.name);
     for(i in word.aliases)
         count += await scraper.getJobCount({ query: word.aliases[i] });
 

@@ -13,7 +13,7 @@ function getJobCount(params) {
 	params    = checkParamValue(filterParams(params));
 	let url = new URL("jobs" , config["base-URL"]);
 
-	return page.getContent(url, params).then((content) => {
+	return page.getContent(url, params).then(async (content) => {
 		if(config["verbose"]) console.log("\u2714" , url.href);
 		let parser = new PageParser(content);
 		let { jobCount } = parser.getContent();
@@ -28,14 +28,31 @@ async function getAllJobCounts(keywords) {
 	let page  = new BrowserPage();
 	let params = {};
 
+	let result = [];
+	for(i in keywords) {
+		let count = 0;
+		console.log(keywords[i].name);
+		for(j in keywords[i].aliases) {
+			let url = new URL("jobs" , config["base-URL"]);
+			count += await page.getContent(url, {q: keywords[i].aliases[j]}).then((content) => {
+				if(config["verbose"]) console.log("\u2714" , url.href);
+				let parser = new PageParser(content);
+				let { jobCount } = parser.getContent();
+				return parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",",""));
+			});
+		}
+		console.log(count);
+		result.push({name: keywords[i].name, count: count});
+	}
 
-	// let result = [];
-	// for(i in keywords) {
+	// let result = await Promise.all(keywords.map(async word => {
 	// 	let count = 0;
-	// 	console.log(keywords[i].name);
-	// 	for(j in keywords[i].aliases) {
+	// 	console.log(word.name);
+	// 	for(j in word.aliases) {
 	// 		let url = new URL("jobs" , config["base-URL"]);
-	// 		count += await page.getContent(url, {q: keywords[i].aliases[j]}).then((content) => {
+	// 		params  = checkParamValue(filterParams({query: word.aliases[j]}));
+	// 		count += await page.getContent(url, params).then((content) => {
+	// 			console.log("test");
 	// 			if(config["verbose"]) console.log("\u2714" , url.href);
 	// 			let parser = new PageParser(content);
 	// 			let { jobCount } = parser.getContent();
@@ -43,25 +60,8 @@ async function getAllJobCounts(keywords) {
 	// 		});
 	// 	}
 	// 	console.log(count);
-	// 	result.push({name: keywords[i].name, count: count});
-	// }
-
-	let result = await Promise.all(keywords.map(async word => {
-		let count = 0;
-		//console.log(word.name);
-		for(j in word.aliases) {
-			let url = new URL("jobs" , config["base-URL"]);
-			count += await page.getContent(url, {q: word.aliases[j]}).then((content) => {
-				if(config["verbose"]) console.log("\u2714" , url.href);
-				let parser = new PageParser(content);
-				let { jobCount } = parser.getContent();
-				return parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",",""));
-			});
-		}
-		//console.log(count);
-	 	result.push({name: word.name, count: count});
-	}));
-
+	//  	result.push({name: word.name, count: count});
+	// }));
 
 	return page.closePage().then(() => result);
 }

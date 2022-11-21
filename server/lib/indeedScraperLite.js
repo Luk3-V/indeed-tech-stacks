@@ -14,19 +14,25 @@ async function getData(params) {
         jobtitles: []
     };
 
-    //data.frameworks = await scraper.getAllJobCounts(FRAMEWORKS);
-    data.frameworks = await Promise.all(FRAMEWORKS.map(async word => {
-        return await getCount(word, params);
-    }));
-    data.tools = await Promise.all(TOOLS.map(async word => {
-        return await getCount(word, params);
-    }));
-    data.languages = await Promise.all(LANGUAGES.map(async word => {
-        return await getCount(word, params);
-    }));
-    data.jobtitles = await Promise.all(JOB_TITLES.map(async word => {
-        return await getCount(word, params);
-    }));
+    // ------- SLOW SCRAPER ---------
+    data.frameworks = await scraper.getAllJobCounts(FRAMEWORKS);
+    data.languages = await scraper.getAllJobCounts(TOOLS);
+    data.tools = await scraper.getAllJobCounts(LANGUAGES);
+    data.jobtitles = await scraper.getAllJobCounts(JOB_TITLES);
+
+    // --------- FAST PARALLEL SCRAPER ---------
+    // data.frameworks = await Promise.all(FRAMEWORKS.map(async word => {
+    //     return await getCount(word, params);
+    // }));
+    // data.tools = await Promise.all(TOOLS.map(async word => {
+    //     return await getCount(word, params);
+    // }));
+    // data.languages = await Promise.all(LANGUAGES.map(async word => {
+    //     return await getCount(word, params);
+    // }));
+    // data.jobtitles = await Promise.all(JOB_TITLES.map(async word => {
+    //     return await getCount(word, params);
+    // }));
 
     return data;
 }

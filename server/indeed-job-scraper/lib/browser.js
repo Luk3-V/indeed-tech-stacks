@@ -36,7 +36,8 @@ BrowserPage.prototype.getOpendedPages = function() {
 
 BrowserPage.prototype.navigate = function(url, params = {}) {
     return this.page.then((page) => {
-        return page.goto(BrowserPage.buildURL(url, params), { waitUntil: 'domcontentloaded', timeout: 0 }).then(() => page);
+        console.log(url);
+        return page.goto(BrowserPage.buildURL(url, params), { waitUntil: 'domcontentloaded' }).then(() => page);
     });
 }
 

@@ -3,7 +3,7 @@ A web app that scrapes Indeed & ranks keywords based on job counts. Built with M
 👉 [Live Site](https://indeedtechstacks.com/) 👈
 
 ## Coming Soon:
-🔷 Add more countries.
-🔷 Add keyword trend graph.
-🔷 Add more categories.
-🔷 Add more job boards
+🔷 Add more countries.<br/>
+🔷 Add keyword trend graph.<br/>
+🔷 Add more categories.<br/>
+🔷 Add more job boards<br/>

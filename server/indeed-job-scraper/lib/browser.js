@@ -37,7 +37,7 @@ BrowserPage.prototype.getOpendedPages = function() {
 
 BrowserPage.prototype.navigate = function(url, params = {}) {
     return this.page.then((page) => {
-        return page.goto(`http://api.scraperapi.com?api_key=${process.env.PROXY_API_KEY}&url=${BrowserPage.buildURL(url, params)}`, { waitUntil: 'domcontentloaded', timeout: 0 }).then(() => page);
+        return page.goto(`http://api.scraperapi.com?api_key=${process.env.PROXY_API_KEY}&url=${BrowserPage.buildURL(url, params)}`, { waitUntil: 'domcontentloaded', timeout: 100000 }).then(() => page);
     });
 }
 

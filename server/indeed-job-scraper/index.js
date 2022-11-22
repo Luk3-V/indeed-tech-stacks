@@ -41,14 +41,18 @@ async function getAllJobCounts(keywords) {
 		console.log(keywords[i].name);
 		for(j in keywords[i].aliases) {
 			let url = new URL("jobs" , config["base-URL"]);
-			count += await page.getContent(url, {q: keywords[i].aliases[j]}).then((content) => {
-				if(config["verbose"]) console.log("\u2714" , url.href);
-				let parser = new PageParser(content);
-				let { jobCount } = parser.getContent();
-				return parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",",""));
-			});
+			try {
+				count += await page.getContent(url, {q: keywords[i].aliases[j]}).then((content) => {
+					if(config["verbose"]) console.log("\u2714" , url.href);
+					let parser = new PageParser(content);
+					let { jobCount } = parser.getContent();
+					return parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",",""));
+				});
+			} catch (error) {
+				console.log(error.message);
+			}
 		}
-		requests++;
+		//requests++;
 		console.log(count);
 		result.push({name: keywords[i].name, count: count});
 	}

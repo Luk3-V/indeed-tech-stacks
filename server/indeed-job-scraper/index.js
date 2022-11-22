@@ -27,9 +27,16 @@ function getJobCount(params) {
 async function getAllJobCounts(keywords) {
 	let page  = new BrowserPage();
 	let params = {};
-
+	
+	let requests = 0;
 	let result = [];
 	for(i in keywords) {
+		if(requests >= 5) { // Prevent bot detection
+			console.log('WAITING 20 SECS');
+			await sleep(20000);
+			requests = 0;
+		}
+
 		let count = 0;
 		console.log(keywords[i].name);
 		for(j in keywords[i].aliases) {
@@ -41,6 +48,7 @@ async function getAllJobCounts(keywords) {
 				return parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",",""));
 			});
 		}
+		requests++;
 		console.log(count);
 		result.push({name: keywords[i].name, count: count});
 	}
@@ -124,6 +132,10 @@ function getJobsPDF(params) {
 
 function release() {
 	return BrowserPage.closeBrowser();
+}
+
+function sleep(ms) {
+	return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 //-----------------------------------------------------------------------------

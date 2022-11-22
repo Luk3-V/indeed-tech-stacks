@@ -2,7 +2,7 @@ let puppeteer     = require('puppeteer-extra');
 let StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
 
-let browser = puppeteer.launch({ headless: false, args: ['--no-sandbox'] });
+let browser = puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
 
 //-----------------------------------------------------------------------------
 

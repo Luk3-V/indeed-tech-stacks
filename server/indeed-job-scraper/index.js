@@ -31,11 +31,11 @@ async function getAllJobCounts(keywords) {
 	let requests = 0;
 	let result = [];
 	for(i in keywords) {
-		if(requests >= 5) { // Prevent bot detection
-			console.log('WAITING 20 SECS');
-			await sleep(20000);
-			requests = 0;
-		}
+		// if(requests >= 5) { // Prevent bot detection
+		// 	console.log('WAITING 20 SECS');
+		// 	await sleep(10000);
+		// 	requests = 0;
+		// }
 
 		let count = 0;
 		console.log(keywords[i].name);

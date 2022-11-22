@@ -1,3 +1,4 @@
+require('dotenv').config();
 let puppeteer     = require('puppeteer-extra');
 let StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
@@ -36,7 +37,7 @@ BrowserPage.prototype.getOpendedPages = function() {
 
 BrowserPage.prototype.navigate = function(url, params = {}) {
     return this.page.then((page) => {
-        return page.goto(BrowserPage.buildURL(url, params), { waitUntil: 'domcontentloaded' }).then(() => page);
+        return page.goto(`http://api.scraperapi.com?api_key=${process.env.PROXY_API_KEY}&url=${BrowserPage.buildURL(url, params)}`, { waitUntil: 'domcontentloaded' }).then(() => page);
     });
 }
 

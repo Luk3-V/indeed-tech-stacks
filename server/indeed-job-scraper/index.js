@@ -13,7 +13,19 @@ function getJobCount(params) {
 	params    = checkParamValue(filterParams(params));
 	let url = new URL("jobs" , config["base-URL"]);
 
-	return page.getContent(url, params).then(async (content) => {
+	let content = (async () => {
+		try {
+			return await asyncCallWithTimeout(page.getContent(url, params), 90000);
+		}
+		catch (err) {
+			console.error(err);
+			return null;
+		}
+	})();
+
+	return content.then(async (content) => {
+		if(!content)
+			return 0;
 		if(config["verbose"]) console.log("\u2714" , url.href);
 		let parser = new PageParser(content);
 		let { jobCount } = parser.getContent();
@@ -42,6 +54,8 @@ async function getAllJobCounts(keywords) {
 		for(j in keywords[i].aliases) {
 			let url = new URL("jobs" , config["base-URL"]);
 			try {
+				
+				run(timeoutValue).then(success).catch(timeout);
 				count += await page.getContent(url, {q: keywords[i].aliases[j]}).then((content) => {
 					if(config["verbose"]) console.log("\u2714" , url.href);
 					let parser = new PageParser(content);
@@ -50,6 +64,8 @@ async function getAllJobCounts(keywords) {
 				});
 			} catch (error) {
 				console.log(error.message);
+				j-=1 
+				continue;
 			}
 		}
 		//requests++;
@@ -140,6 +156,28 @@ function release() {
 
 function sleep(ms) {
 	return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+/**
+ * Call an async function with a maximum time limit (in milliseconds) for the timeout
+ * @param {Promise<any>} asyncPromise An asynchronous promise to resolve
+ * @param {number} timeLimit Time limit to attempt function in milliseconds
+ * @returns {Promise<any> | undefined} Resolved promise for async function call, or an error if time limit reached
+ */
+ const asyncCallWithTimeout = async (asyncPromise, timeLimit) => {
+    let timeoutHandle;
+
+    const timeoutPromise = new Promise((_resolve, reject) => {
+        timeoutHandle = setTimeout(
+            () => reject(new Error('Async call timeout limit reached')),
+            timeLimit
+        );
+    });
+
+    return Promise.race([asyncPromise, timeoutPromise]).then(result => {
+        clearTimeout(timeoutHandle);
+        return result;
+    })
 }
 
 //-----------------------------------------------------------------------------

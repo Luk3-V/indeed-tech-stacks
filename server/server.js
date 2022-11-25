@@ -17,7 +17,8 @@ app.use(express.json());
 const IndeedRouter = require('./routes/IndeedRouter');
 app.use('/indeed', IndeedRouter);
 
-app.listen(process.env.PORT, () => console.log(`Server up on port: ${process.env.PORT}`));
+let server = app.listen(process.env.PORT, () => console.log(`Server up on port: ${process.env.PORT}`));
+server.timeout = 0;
 
 //---------------------------------------------------------------------------------------------------
 
@@ -29,7 +30,7 @@ app.listen(process.env.PORT, () => console.log(`Server up on port: ${process.env
 // Add trends data/graphs
 // More tools keywords -------
 // Light/Dark toggle ------
-// store all weekly trend data, only update daily ranking data 
+// store all weekly trend data, only update daily ranking data
 
 // REFACTOR:
 // Remake scraper OR create custom scraper module
@@ -54,7 +55,7 @@ app.listen(process.env.PORT, () => console.log(`Server up on port: ${process.env
 // Make front end ------
 // Implement database -----------
 // Setup routine DB updates ----------
-// Seperate repos & ready code for deployment
-// Figure out hosting & domain 
-// SHIP!
+// Ready code for deployment ----------
+// Figure out hosting & domain -----------
+// SHIP! --------
 // Tweet & post on website

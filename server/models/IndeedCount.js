@@ -8,19 +8,31 @@ const IndeedSchema = new mongoose.Schema({
     },
     frameworks: [{
         name: String,
-        count: Number
+        count: {
+            type: Number,
+            default: 0
+        }
     }],
     languages: [{
         name: String,
-        count: Number
+        count: {
+            type: Number,
+            default: 0
+        }
     }],
     tools: [{
         name: String,
-        count: Number
+        count: {
+            type: Number,
+            default: 0
+        }
     }],
     jobtitles: [{
         name: String,
-        count: Number
+        count: {
+            type: Number,
+            default: 0
+        }
     }]
 });
 

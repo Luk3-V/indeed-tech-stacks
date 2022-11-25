@@ -37,7 +37,9 @@ BrowserPage.prototype.getOpendedPages = function() {
 
 BrowserPage.prototype.navigate = function(url, params = {}) {
     return this.page.then((page) => {
-        return page.goto(`http://api.scraperapi.com?api_key=${process.env.PROXY_API_KEY}&url=${BrowserPage.buildURL(url, params)}`, { waitUntil: 'domcontentloaded', timeout: 100000 }).then(() => page);
+        console.log("GOTO");
+        let proxy_url = `http://api.scraperapi.com?api_key=${process.env.PROXY_API_KEY}&url=${BrowserPage.buildURL(url, params)}&country_code=us`;
+        return page.goto(proxy_url, { waitUntil: 'domcontentloaded', timeout: 90000 }).then(() => page);
     });
 }
 
@@ -45,6 +47,7 @@ BrowserPage.prototype.navigate = function(url, params = {}) {
 
 BrowserPage.prototype.getContent = function(url, params) {
     return this.navigate(url, params).then((page) => {
+        console.log("EVALUATE");
         return page.evaluate(() => document.querySelector('*').outerHTML);
     });
 }

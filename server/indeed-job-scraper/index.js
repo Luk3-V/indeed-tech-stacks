@@ -15,7 +15,7 @@ function getJobCount(params) {
 
 	let content = (async () => {
 		try {
-			return await asyncCallWithTimeout(page.getContent(url, params), 90000);
+			return await page.getContent(url, params);
 		}
 		catch (err) {
 			console.error(err);
@@ -54,13 +54,14 @@ async function getAllJobCounts(keywords) {
 		for(j in keywords[i].aliases) {
 			let url = new URL("jobs" , config["base-URL"]);
 			try {
-				let content = await asyncCallWithTimeout(page.getContent(url, {q: keywords[i].aliases[j]}), 90000);
+				//let content = await asyncCallWithTimeout(page.getContent(url, {q: keywords[i].aliases[j]}), 90000);
+				let content = await page.getContent(url, {q: keywords[i].aliases[j]});
 				
 				if(config["verbose"]) console.log("\u2714" , url.href);
 				let parser = new PageParser(content);
 				let { jobCount } = parser.getContent();
 				count += parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",",""));
-				
+
 			} catch (error) {
 				console.log(error.message);
 				j-=1 

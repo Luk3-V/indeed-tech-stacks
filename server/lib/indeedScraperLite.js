@@ -15,33 +15,33 @@ async function getData(params) {
     };
 
     // ------- SLOW SCRAPER ---------
-    // data.frameworks = await scraper.getAllJobCounts(FRAMEWORKS);
-    // data.languages = await scraper.getAllJobCounts(TOOLS);
-    // data.tools = await scraper.getAllJobCounts(LANGUAGES);
-    // data.jobtitles = await scraper.getAllJobCounts(JOB_TITLES);
+    data.frameworks = await scraper.getAllJobCounts(FRAMEWORKS);
+    data.languages = await scraper.getAllJobCounts(TOOLS);
+    data.tools = await scraper.getAllJobCounts(LANGUAGES);
+    data.jobtitles = await scraper.getAllJobCounts(JOB_TITLES);
 
     // --------- CHUNKED PARALLEL SCRAPER ---------
-    let CHUNK_SIZE = 5;
-    for(let i=0; i<FRAMEWORKS.length; i+=CHUNK_SIZE) {
-        data.frameworks.push(await Promise.all(FRAMEWORKS.slice(i,i+CHUNK_SIZE).map(async word => {
-            return await getCount(word, params);
-        })));
-    }
-    for(let i=0; i<TOOLS.length; i+=CHUNK_SIZE) {
-        data.tools.push(await Promise.all(TOOLS.slice(i,i+CHUNK_SIZE).map(async word => {
-            return await getCount(word, params);
-        })));
-    }
-    for(let i=0; i<LANGUAGES.length; i+=CHUNK_SIZE) {
-        data.languages.push(await Promise.all(LANGUAGES.slice(i,i+CHUNK_SIZE).map(async word => {
-            return await getCount(word, params);
-        })));
-    }
-    for(let i=0; i<JOB_TITLES.length; i+=CHUNK_SIZE) {
-        data.jobtitles.push(await Promise.all(JOB_TITLES.slice(i,i+CHUNK_SIZE).map(async word => {
-            return await getCount(word, params);
-        })));
-    }
+    // let CHUNK_SIZE = 5;
+    // for(let i=0; i<FRAMEWORKS.length; i+=CHUNK_SIZE) {
+    //     data.frameworks.push(await Promise.all(FRAMEWORKS.slice(i,i+CHUNK_SIZE).map(async word => {
+    //         return await getCount(word, params);
+    //     })));
+    // }
+    // for(let i=0; i<TOOLS.length; i+=CHUNK_SIZE) {
+    //     data.tools.push(await Promise.all(TOOLS.slice(i,i+CHUNK_SIZE).map(async word => {
+    //         return await getCount(word, params);
+    //     })));
+    // }
+    // for(let i=0; i<LANGUAGES.length; i+=CHUNK_SIZE) {
+    //     data.languages.push(await Promise.all(LANGUAGES.slice(i,i+CHUNK_SIZE).map(async word => {
+    //         return await getCount(word, params);
+    //     })));
+    // }
+    // for(let i=0; i<JOB_TITLES.length; i+=CHUNK_SIZE) {
+    //     data.jobtitles.push(await Promise.all(JOB_TITLES.slice(i,i+CHUNK_SIZE).map(async word => {
+    //         return await getCount(word, params);
+    //     })));
+    // }
 
     // --------- FAST PARALLEL SCRAPER ---------
     // data.frameworks = await Promise.all(FRAMEWORKS.map(async word => {

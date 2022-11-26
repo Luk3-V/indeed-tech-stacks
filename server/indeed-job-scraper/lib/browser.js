@@ -3,7 +3,13 @@ let puppeteer     = require('puppeteer-extra');
 let StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
 
-let browser = puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
+// let browser = puppeteer.launch({ headless: true, ignoreHTTPSErrors: true, args: [
+//     '--no-sandbox', 
+//     `--proxy-server=http://${process.env.PROXY_SERVER}:${process.env.PROXY_SERVER_PORT}`
+// ] });
+let browser = puppeteer.launch({ headless: true, args: [
+    '--no-sandbox'
+] });
 
 //-----------------------------------------------------------------------------
 
@@ -19,6 +25,10 @@ function BrowserPage() {
 BrowserPage.prototype.init = function() {
 	this.browser = browser;
 	this.page    = this.createNewBrowserPage();
+    // this.page.then(page => page.authenticate({
+    //     username: process.env.PROXY_USERNAME,
+    //     password: process.env.PROXY_PASSWORD
+    // }));
 }
 
 //-----------------------------------------------------------------------------
@@ -38,8 +48,8 @@ BrowserPage.prototype.getOpendedPages = function() {
 BrowserPage.prototype.navigate = function(url, params = {}) {
     return this.page.then((page) => {
         console.log("GOTO");
-        let proxy_url = `http://api.scraperapi.com?api_key=${process.env.PROXY_API_KEY}&url=${BrowserPage.buildURL(url, params)}&country_code=us`;
-        return page.goto(proxy_url, { waitUntil: 'domcontentloaded', timeout: 90000 }).then(() => page);
+        //let proxy_url = `http://api.scraperapi.com?api_key=${process.env.PROXY_API_KEY}&url=${BrowserPage.buildURL(url, params)}`;
+        return page.goto(BrowserPage.buildURL(url, params), { waitUntil: 'domcontentloaded', timeout: 90000 }).then(() => page);
     });
 }
 

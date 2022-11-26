@@ -54,14 +54,13 @@ async function getAllJobCounts(keywords) {
 		for(j in keywords[i].aliases) {
 			let url = new URL("jobs" , config["base-URL"]);
 			try {
+				let content = await asyncCallWithTimeout(page.getContent(url, {q: keywords[i].aliases[j]}), 90000);
 				
-				run(timeoutValue).then(success).catch(timeout);
-				count += await page.getContent(url, {q: keywords[i].aliases[j]}).then((content) => {
-					if(config["verbose"]) console.log("\u2714" , url.href);
-					let parser = new PageParser(content);
-					let { jobCount } = parser.getContent();
-					return parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",",""));
-				});
+				if(config["verbose"]) console.log("\u2714" , url.href);
+				let parser = new PageParser(content);
+				let { jobCount } = parser.getContent();
+				count += parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",",""));
+				
 			} catch (error) {
 				console.log(error.message);
 				j-=1 

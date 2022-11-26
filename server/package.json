@@ -24,8 +24,5 @@
 		"dotenv": "^16.0.3",
 		"nodemon": "^2.0.20"
 	},
-	"license": "ISC",
-	"engines": {
-		"node": "14.x"
-	}
+	"license": "ISC"
 }

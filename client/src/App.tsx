@@ -32,7 +32,7 @@ function App() {
   const [category, setCategory] = useState<String>("frameworks");
   const [theme, setTheme] = useState<boolean>(!localStorage.getItem("light") ? true : false);
   //const dataUrl = 'indeed/';
-  const dataUrl = 'https://indeed-tech-stacks-api-production.up.railway.app/indeed/';
+  const dataUrl = 'http://3.18.174.51:5000/indeed/';
 
   function toggleTheme() {
     document.body.classList.toggle('dark');

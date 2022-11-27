@@ -43,11 +43,11 @@ async function getAllJobCounts(keywords) {
 	let requests = 0;
 	let result = [];
 	for(i in keywords) {
-		// if(requests >= 5) { // Prevent bot detection
-		// 	console.log('WAITING 20 SECS');
-		// 	await sleep(10000);
-		// 	requests = 0;
-		// }
+		if(requests >= 5) { // Prevent bot detection
+			console.log('WAITING 30 SECS');
+			await sleep(30000);
+			requests = 0;
+		}
 
 		let count = 0;
 		console.log(keywords[i].name);
@@ -60,37 +60,24 @@ async function getAllJobCounts(keywords) {
 				if(config["verbose"]) console.log("\u2714" , url.href);
 				let parser = new PageParser(content);
 				let { jobCount } = parser.getContent();
-				count += parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",",""));
-
+				
+				let result = parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",",""));
+				if(result >= 0)
+					count += result
+				else
+					console.log("ERROR: SCRAPED A NaN");
+					
 			} catch (error) {
 				console.log(error.message);
 				j-=1 
 				continue;
 			}
 		}
-		//requests++;
+		requests++;
 		console.log(count);
 		result.push({name: keywords[i].name, count: count});
 	}
-
-	// let result = await Promise.all(keywords.map(async word => {
-	// 	let count = 0;
-	// 	console.log(word.name);
-	// 	for(j in word.aliases) {
-	// 		let url = new URL("jobs" , config["base-URL"]);
-	// 		params  = checkParamValue(filterParams({query: word.aliases[j]}));
-	// 		count += await page.getContent(url, params).then((content) => {
-	// 			console.log("test");
-	// 			if(config["verbose"]) console.log("\u2714" , url.href);
-	// 			let parser = new PageParser(content);
-	// 			let { jobCount } = parser.getContent();
-	// 			return parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",",""));
-	// 		});
-	// 	}
-	// 	console.log(count);
-	//  	result.push({name: word.name, count: count});
-	// }));
-
+	
 	return page.closePage().then(() => result);
 }
 

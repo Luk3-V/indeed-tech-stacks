@@ -5,7 +5,7 @@ export default function Toggle(props: any) {
     const theme = useContext(ThemeContext);
 
     return (
-        <div className="relative flex flex-col items-center justify-center overflow-hidden">
+        <div className="relative flex flex-col items-center justify-center">
             <div className="flex items-center">
                 <span className="mr-2 text-sm font-medium">
                     {theme ? "Dark" : "Light"} Mode

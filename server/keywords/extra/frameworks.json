@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Nuxt",
+        "aliases": ["NuxtJS", "Nuxt.js"],
+        "language": "JavaScript",
+        "for": "Vue"
+    },
+    {
+        "name": "SvelteKit",
+        "aliases": ["SvelteKit","Svelte Kit"],
+        "language": "JavaScript",
+        "for": "Svelte"
+    }
+]

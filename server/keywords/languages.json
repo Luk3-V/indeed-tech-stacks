@@ -1,75 +1,75 @@
 [
     {
         "name": "JavaScript",
-        "aliases": ["JS"]
+        "aliases": ["JavaScript"]
     },
     {
         "name": "TypeScript",
-        "aliases": ["TS"]
-    },
-    {
-        "name": "JSX",
-        "aliases": ["JavaScript XML", "JavaScript Syntax Extension"]
+        "aliases": ["TypeScript"]
     },
 
     {
         "name": "HTML",
-        "aliases": ["HTML5", "ES6"]
+        "aliases": ["HTML"]
     },
     {
         "name": "CSS",
-        "aliases": ["CSS3"]
+        "aliases": ["CSS"]
     },
     {
         "name": "jQuery",
-        "aliases": []
+        "aliases": ["jQuery"]
     },
     {
         "name": "MySQL",
-        "aliases": ["SQL"]
+        "aliases": ["MySQL"]
     },
     {
         "name": "PHP",
-        "aliases": []
+        "aliases": ["PHP"]
     },
     {
         "name": "Python",
-        "aliases": []
+        "aliases": ["Python"]
     },
     {
         "name": "Java",
-        "aliases": []
+        "aliases": ["Java"]
     },
     {
         "name": "C++",
-        "aliases": []
+        "aliases": ["C++"]
     },
     {
         "name": "C#",
-        "aliases": []
+        "aliases": ["C#"]
     },
     {
         "name": "Ruby",
-        "aliases": []
+        "aliases": ["Ruby Developer"]
     },
     {
         "name": "Rust",
-        "aliases": []
+        "aliases": ["Rust Developer"]
     },
     {
         "name": "Objective-C",
         "aliases": ["Objective C"]
     },
     {
-        "name": "Go",
+        "name": "Golang",
         "aliases": ["Golang"]
     },
     {
-        "name": "Haskell",
-        "aliases": []
+        "name": "Scala",
+        "aliases": ["Scala Developer"]
     },
     {
-        "name": "Scala",
-        "aliases": []
+        "name": "Perl",
+        "aliases": ["Perl"]
+    },
+    {
+        "name": "Shell",
+        "aliases": ["PowerShell"]
     }
 ]

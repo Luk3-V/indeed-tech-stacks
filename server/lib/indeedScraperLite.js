@@ -1,24 +1,36 @@
 const scraper = require('../indeed-job-scraper/index.js');
 
-const FRAMEWORKS = require('../keywords/lite/frameworks.json');
-const TOOLS = require('../keywords/lite/tools.json');
-const LANGUAGES = require('../keywords/lite/languages.json');
-const JOB_TITLES = require('../keywords/lite/jobtitles.json');
+const FRAMEWORKS = require('../keywords/frameworks.json');
+const TOOLS = require('../keywords/tools.json');
+const LANGUAGES = require('../keywords/languages.json');
+const JOB_TITLES = require('../keywords/jobtitles.json');
 
 
 async function getData(params) {
     let data = {
-        frameworks: [],
-        languages: [],
-        tools: [],
-        jobtitles: []
+        us: {
+            frameworks: [],
+            languages: [],
+            tools: [],
+            jobtitles: []
+        },
+        uk: {
+            frameworks: [],
+            languages: [],
+            tools: [],
+            jobtitles: []
+        }
     };
 
     // ------- SLOW SCRAPER ---------
-    data.frameworks = await scraper.getAllJobCounts(FRAMEWORKS);
-    data.languages = await scraper.getAllJobCounts(TOOLS);
-    data.tools = await scraper.getAllJobCounts(LANGUAGES);
-    data.jobtitles = await scraper.getAllJobCounts(JOB_TITLES);
+    data.us.frameworks = await scraper.getAllJobCounts(FRAMEWORKS, 'www');
+    data.us.languages = await scraper.getAllJobCounts(LANGUAGES, 'www');
+    data.us.tools = await scraper.getAllJobCounts(TOOLS, 'www');
+    data.us.jobtitles = await scraper.getAllJobCounts(JOB_TITLES, 'www');
+    data.uk.frameworks = await scraper.getAllJobCounts(FRAMEWORKS, 'uk');
+    data.uk.languages = await scraper.getAllJobCounts(LANGUAGES, 'uk');
+    data.uk.tools = await scraper.getAllJobCounts(TOOLS, 'uk');
+    data.uk.jobtitles = await scraper.getAllJobCounts(JOB_TITLES, 'uk');
 
     // --------- CHUNKED PARALLEL SCRAPER ---------
     // let CHUNK_SIZE = 5;
@@ -70,7 +82,3 @@ async function getCount(word, params) {
 }
 
 module.exports = {getData};
-
-// implement more params
-// implement new scraper that doesnt close pages, grabs counts faster
-// figure out fastest way to scrape multiple pages

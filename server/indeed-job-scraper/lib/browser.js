@@ -3,19 +3,15 @@ let puppeteer     = require('puppeteer-extra');
 let StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteer.use(StealthPlugin());
 
-// let browser = puppeteer.launch({ headless: true, ignoreHTTPSErrors: true, args: [
-//     '--no-sandbox', 
-//     `--proxy-server=http://${process.env.PROXY_SERVER}:${process.env.PROXY_SERVER_PORT}`
-// ] });
-// let browser = puppeteer.launch({ headless: true, args: [
-//     '--no-sandbox'
-// ] });
+let browser = puppeteer.launch({ headless: true, args: [
+    '--no-sandbox'
+] });
 
 //-----------------------------------------------------------------------------
 
 function BrowserPage() {
-    if(this.browser)
-        this.closeBrowser();
+    // if(this.browser)
+    //     this.closeBrowser();
 	this.browser = null;
 	this.page    = null;
     
@@ -25,14 +21,11 @@ function BrowserPage() {
 //-----------------------------------------------------------------------------
 
 BrowserPage.prototype.init = function() {
-	this.browser = puppeteer.launch({ headless: true, args: [
-        '--no-sandbox'
-    ] });
+	// this.browser = puppeteer.launch({ headless: true, args: [
+    //     '--no-sandbox'
+    // ] });
+    this.browser = browser;
 	this.page    = this.createNewBrowserPage();
-    // this.page.then(page => page.authenticate({
-    //     username: process.env.PROXY_USERNAME,
-    //     password: process.env.PROXY_PASSWORD
-    // }));
 }
 
 //-----------------------------------------------------------------------------

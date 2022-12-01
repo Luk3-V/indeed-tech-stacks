@@ -6,34 +6,66 @@ const IndeedSchema = new mongoose.Schema({
         required: true,
         default: Date.now
     },
-    frameworks: [{
-        name: String,
-        count: {
-            type: Number,
-            default: 0
-        }
-    }],
-    languages: [{
-        name: String,
-        count: {
-            type: Number,
-            default: 0
-        }
-    }],
-    tools: [{
-        name: String,
-        count: {
-            type: Number,
-            default: 0
-        }
-    }],
-    jobtitles: [{
-        name: String,
-        count: {
-            type: Number,
-            default: 0
-        }
-    }]
+    us: {
+        frameworks: [{
+            name: String,
+            count: {
+                type: Number,
+                default: 0
+            }
+        }],
+        languages: [{
+            name: String,
+            count: {
+                type: Number,
+                default: 0
+            }
+        }],
+        tools: [{
+            name: String,
+            count: {
+                type: Number,
+                default: 0
+            }
+        }],
+        jobtitles: [{
+            name: String,
+            count: {
+                type: Number,
+                default: 0
+            }
+        }]
+    },
+    uk: {
+        frameworks: [{
+            name: String,
+            count: {
+                type: Number,
+                default: 0
+            }
+        }],
+        languages: [{
+            name: String,
+            count: {
+                type: Number,
+                default: 0
+            }
+        }],
+        tools: [{
+            name: String,
+            count: {
+                type: Number,
+                default: 0
+            }
+        }],
+        jobtitles: [{
+            name: String,
+            count: {
+                type: Number,
+                default: 0
+            }
+        }]
+    }
 });
 
-module.exports = mongoose.model('indeedcount', IndeedSchema);
+module.exports = mongoose.model('indeed-count', IndeedSchema);

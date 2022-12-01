@@ -36,7 +36,7 @@ function getJobCount(params) {
 
 //-----------------------------------------------------------------------------
 
-async function getAllJobCounts(keywords) {
+async function getAllJobCounts(keywords, prefix) {
 	let page  = new BrowserPage();
 	let params = {};
 	
@@ -52,7 +52,7 @@ async function getAllJobCounts(keywords) {
 		let count = 0;
 		console.log(keywords[i].name);
 		for(j in keywords[i].aliases) {
-			let url = new URL("jobs" , config["base-URL"]);
+			let url = new URL("jobs" , `https://${prefix}.indeed.com/`);
 			try {
 				//let content = await asyncCallWithTimeout(page.getContent(url, {q: keywords[i].aliases[j]}), 90000);
 				let content = await page.getContent(url, {q: keywords[i].aliases[j]});

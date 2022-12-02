@@ -44,6 +44,7 @@ export const ThemeContext = createContext(false);
 ReactGA.initialize(import.meta.env.VITE_GA_TRACKING_CODE);
 
 function App() {
+  const [loading, setLoading] = useState<boolean>(true);
   const [data, setData] = useState<Data>();
   const [category, setCategory] = useState<String>("frameworks");
   const [country, setCountry] = useState<String>("us");
@@ -68,8 +69,10 @@ function App() {
       })
       .then((data) => {
         setData(data);
+        setLoading(false);
         console.log("DATA DATE: "+new Date(data.date).toUTCString());
-      });
+      })
+      .catch(() => setLoading(false));
 
     if(!localStorage.getItem("light"))
       document.body.classList.add('dark');
@@ -100,10 +103,10 @@ function App() {
         </div>
 
         <div className="flex max-w-5xl mx-auto">
-          {category==="frameworks" && <RankingChart title="# of Job Postings" data={country === 'us' ? data?.us.frameworks : data?.uk.frameworks}/>}
-          {category==="languages" && <RankingChart title="# of Job Postings" data={country === 'us' ? data?.us.languages : data?.uk.languages}/>}
-          {category==="tools" && <RankingChart title="# of Job Postings" data={country === 'us' ? data?.us.tools : data?.uk.tools}/>}
-          {category==="jobtitles" && <RankingChart title="# of Job Postings" data={country === 'us' ? data?.us.jobtitles : data?.uk.jobtitles}/>}
+          {category==="frameworks" && <RankingChart title="# of Job Postings" data={country === 'us' ? data?.us.frameworks : data?.uk.frameworks} loading={loading}/>}
+          {category==="languages" && <RankingChart title="# of Job Postings" data={country === 'us' ? data?.us.languages : data?.uk.languages} loading={loading}/>}
+          {category==="tools" && <RankingChart title="# of Job Postings" data={country === 'us' ? data?.us.tools : data?.uk.tools} loading={loading}/>}
+          {category==="jobtitles" && <RankingChart title="# of Job Postings" data={country === 'us' ? data?.us.jobtitles : data?.uk.jobtitles} loading={loading}/>}
         </div>
         
         <div className='px-3 md:px-10 max-w-5xl mx-auto text-gray-600 dark:text-gray-400 text-md'>

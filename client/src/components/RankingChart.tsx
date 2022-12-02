@@ -17,13 +17,20 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 
 export default function RankingChart(props: any) {
   const [height, setHeight] = useState(0);
+  const [data, setData] = useState<any[]>([]);
   const theme = useContext(ThemeContext);
+
+  useEffect(() => {
+    console.log("MOUNT"+props.data?.length);
+  }, [])
 
   useEffect(() => {
     if(props.data) {
       setHeight(40*props.data.length);
 
-      props.data.sort((a: any, b: any) => b.count - a.count);
+      const sorted = [...props.data].sort((a: any, b: any) => b.count - a.count);
+      setData(sorted);
+      console.log("SORT");
     }
     else
       setHeight(0);
@@ -33,12 +40,12 @@ export default function RankingChart(props: any) {
     <div className='w-full px-3 md:px-10 py-10 font-mono'>
         <h2 className='text-2xl font-semibold mb-3'>{props.title}:</h2>
 
-        {props.data?.length === 0 ? 
-        <p className='text-lg text-center'>Uh oh, missing data...</p> 
+        {data.length === 0 ? 
+        <p className='text-lg text-center'>😕 Uh oh, missing data...</p> 
         :
         <ResponsiveContainer width='98%' height={height}>
           <BarChart layout='vertical' margin={{ top: 5, right: 40, left: 60, bottom: 5 }}
-              data={props.data}
+              data={data}
           >
               <XAxis type='number' stroke={theme ? '#9ca3af' : '#6b7280'} domain={[0, (dataMax: number) => Math.round((dataMax*1.10)/100) * 100]}/>
               <YAxis type='category' dataKey="name" stroke={theme ? '#9ca3af' : '#6b7280'} tick={{ fill: `${theme ? 'white' : 'black'}` }} tickMargin={5}/>

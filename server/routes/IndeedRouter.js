@@ -19,16 +19,16 @@ router.get('/:date', getData, (req, res) => {
 });
 
 // POST new data for the current day
-// router.post('/', (req, res) => {
-//     scrape();
-//     res.json({ message: "STARTED SCRAPE" });
-//     // try {
-//     //     
-//     //     res.status(201).json(newData); // 201 = Object created
-//     // } catch (error) {
-//     //     res.status(400).json({ message: error.message }); // 400 = User input error
-//     // }
-// });
+router.post('/', (req, res) => {
+    scrape();
+    res.json({ message: "STARTED SCRAPE" });
+    // try {
+    //     
+    //     res.status(201).json(newData); // 201 = Object created
+    // } catch (error) {
+    //     res.status(400).json({ message: error.message }); // 400 = User input error
+    // }
+});
 
 // DELETE data by date (YYYY-MM-DD) OR by "newest"
 router.delete('/:date', getData, async (req, res) => {

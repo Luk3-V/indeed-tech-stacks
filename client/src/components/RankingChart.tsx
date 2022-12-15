@@ -50,7 +50,7 @@ export default function RankingChart(props: any) {
           >
               <XAxis type='number' stroke={theme ? '#9ca3af' : '#6b7280'} domain={[0, (dataMax: number) => Math.round((dataMax*1.10)/100) * 100]}/>
               <YAxis type='category' dataKey="name" stroke={theme ? '#9ca3af' : '#6b7280'} tick={{ fill: `${theme ? 'white' : 'black'}` }} tickMargin={5}/>
-              <Tooltip cursor={{ fill: `${theme ? '#1f2937' : '#e5e7eb'}` }} content={<CustomTooltip/>}/>
+              <Tooltip cursor={{ fill: `${theme ? '#1f2937' : '#e5e7eb'}` }} content={<CustomTooltip/>} wrapperStyle={{ outline:'none', border:'none'}}/>
               <Bar dataKey="count" fill="#3b82f6" radius={[0, 3, 3, 0]}>
               <LabelList dataKey="count" position="right" fill={theme ? "#93c5fd" : "#1d4ed8"}/>
               </Bar>

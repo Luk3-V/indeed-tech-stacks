@@ -53,13 +53,13 @@ export default function TrendChart(props: any) {
         {(!props.loading && !props.data) && <p className='text-lg text-center'>😕 Uh oh, missing data...</p>}
         {props.data && 
         <ResponsiveContainer width='98%' height={300} >
-          <LineChart margin={{ top: 5, right: 40, left: 60, bottom: 5 }}
+          <LineChart margin={{ top: 5, right: 40, left: 5, bottom: 5 }}
               data={data}
           >
               <CartesianGrid stroke={theme ? "#334155" : '#e2e8f0'} />
               <XAxis dataKey="date" stroke={theme ? '#9ca3af' : '#6b7280'} interval={1}/>
               <YAxis stroke={theme ? '#9ca3af' : '#6b7280'} />
-              <Tooltip cursor={{ fill: `${theme ? '#1f2937' : '#e5e7eb'}` }} content={<CustomTooltip/>}/>
+              <Tooltip cursor={{ fill: `${theme ? '#1f2937' : '#e5e7eb'}` }} content={<CustomTooltip/>} wrapperStyle={{ outline:'none', border:'none'}}/>
               <Legend verticalAlign="top" height={36}/>
 
               {props.selectedOptions.map((o: any, i: number) => <Line type="monotone" dataKey={o.name} stroke={COLORS[i]} strokeWidth={2} key={i}/>)}

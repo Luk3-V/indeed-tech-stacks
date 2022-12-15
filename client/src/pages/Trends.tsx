@@ -51,7 +51,7 @@ export default function Trends(props: any) {
 
     return (
         <>
-            <p className="mt-3 text-gray-600 dark:text-gray-400 text-md">{`✨ Updated ${data ? fromnow(data[data.length-1].date, {and:true, suffix:true}) : ''}.`}</p>
+            <p className="mt-3 text-gray-600 dark:text-gray-400 text-md">{`✨ ${data ? 'Updated '+fromnow(data[data.length-1].date, {and:true, suffix:true}) : 'Updating..'}.`}</p>
 
             <div className='mt-6'>
                 <label className="block mb-2 text-lg" >Select Keywords (up to 3)</label>

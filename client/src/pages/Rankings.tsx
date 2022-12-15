@@ -23,7 +23,7 @@ export default function Rankings(props: any) {
 
     return (
         <>
-            <p className="mt-3 text-gray-600 dark:text-gray-400 text-md">{`✨ Updated ${data ? fromnow(data.date, {and:true, suffix:true}) : ''}.`}</p>
+            <p className="mt-3 text-gray-600 dark:text-gray-400 text-md">{`✨ ${data ? 'Updated '+fromnow(data.date, {and:true, suffix:true}) : 'Updating..'}.`}</p>
 
             <div className="flex max-w-5xl mx-auto">
                 {props.category==="frameworks" && <RankingChart title="# of Job Postings" data={props.country === 'us' ? data?.us.frameworks : data?.uk.frameworks} loading={loading}/>}

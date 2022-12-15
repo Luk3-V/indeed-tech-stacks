@@ -25,7 +25,7 @@ export default function MultiSelect(props: any) {
                 multiValueLabel: () => 
                     'px-2',
                 multiValueRemove: () =>
-                    'px-1 hover:bg-red-600 hover:bg-opacity-60',
+                    'px-1 rounded-r-sm hover:bg-red-600 hover:bg-opacity-60',
                 valueContainer: () => 'min-w-[120px]'
             }}
             />

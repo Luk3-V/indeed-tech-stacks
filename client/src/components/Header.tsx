@@ -24,12 +24,12 @@ export default function Header(props: any) {
         </div>
 
         <div className="mt-5">
-            <div className="flex">
+            <div className="flex flex-col sm:flex-row">
                 <div>
                     <label htmlFor="Category" className="block mb-2 text-xl" >Select a Category</label>
                     <Select name="category" options={CATEGORIES} value={props.category} onChange={(v: any) => props.setCategory(v)} />
                 </div>
-                <div className="ml-5">
+                <div className="mt-5 sm:ml-5 sm:mt-0">
                     <label htmlFor="Country" className="block mb-2 text-xl" >Select a Country</label>
                     <Select name="country" options={COUNTRIES} value={props.country} onChange={(v: any) => props.setCountry(v)} />
                 </div>

@@ -9,10 +9,10 @@ export default function Nav() {
 
     return (
         <div className='mt-10'>
-            <Tabs defaultIndex={1} onSelect={(i) => i===0 ? navigate('/') : navigate('/trends')}>
+            <Tabs defaultIndex={location.pathname==='/' ? 0 : 1} onSelect={(i) => i===0 ? navigate('/') : navigate('/trends')}>
                 <TabList>
-                    <Tab><span className="text-2xl mx-1">Rankings</span></Tab>
-                    <Tab><span className="text-2xl mx-1">Trends</span></Tab>
+                    <Tab><span className="text-2xl mx-1"><span className='text-xl'>🏆</span> Rankings</span></Tab>
+                    <Tab><span className="text-2xl mx-1"><span className='text-xl'>⌛</span> Trends</span></Tab>
                 </TabList>
             </Tabs>
         </div>

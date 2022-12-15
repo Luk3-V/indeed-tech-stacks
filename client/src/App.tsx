@@ -19,8 +19,8 @@ export const ThemeContext = createContext(false);
 //ReactGA.initialize(import.meta.env.VITE_GA_TRACKING_CODE);
 
 function App() {
-  const [category, setCategory] = useState<String>("frameworks");
-  const [country, setCountry] = useState<String>("us");
+  const [category, setCategory] = useState({value: "frameworks", name: "🧱 Frameworks"});
+  const [country, setCountry] = useState({value: "us", name: "🇺🇸 US"});
   const [theme, setTheme] = useState<boolean>(!localStorage.getItem("light") ? true : false);
 
   function toggleTheme() {
@@ -37,19 +37,19 @@ function App() {
 
     if(!localStorage.getItem("light"))
       document.body.classList.add('dark');
-  }, [])
+  }, []);
 
   return (
     <ThemeContext.Provider value={theme}>
       <BrowserRouter>
         <div className="min-h-screen relative px-3 md:px-10 max-w-5xl mx-auto">
-          <Header setCategory={setCategory} setCountry={setCountry} toggleTheme={toggleTheme}/>
+          <Header category={category} setCategory={setCategory} country={country} setCountry={setCountry} toggleTheme={toggleTheme}/>
 
           <Nav />
 
           <Routes>
-            <Route path='/' element={<Rankings category={category} country={country} />} />
-            <Route path='/trends' element={<Trends category={category} country={country} />} />
+            <Route path='/' element={<Rankings category={category.value} country={country.value} />} />
+            <Route path='/trends' element={<Trends category={category.value} country={country.value} />} />
             <Route path='*' element={<>404 NOT FOUND</>} />
           </Routes>
 

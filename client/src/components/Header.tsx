@@ -27,11 +27,11 @@ export default function Header(props: any) {
             <div className="flex">
                 <div>
                     <label htmlFor="Category" className="block mb-2 text-xl" >Select a Category</label>
-                    <Select name="category" options={CATEGORIES} onChange={(e: any) => props.setCategory(e.target.value)} />
+                    <Select name="category" options={CATEGORIES} value={props.category} onChange={(v: any) => props.setCategory(v)} />
                 </div>
                 <div className="ml-5">
                     <label htmlFor="Country" className="block mb-2 text-xl" >Select a Country</label>
-                    <Select name="country" options={COUNTRIES} onChange={(e: any) => props.setCountry(e.target.value)} />
+                    <Select name="country" options={COUNTRIES} value={props.country} onChange={(v: any) => props.setCountry(v)} />
                 </div>
             </div>
         </div>

@@ -37,7 +37,6 @@ export default function Trends(props: any) {
           })
           .then((data) => {
             setData(data);
-            setOptions(data[0].us.frameworks);
             setLoading(false);
             console.log("DATA DATE: "+new Date(data[data.length-1].date).toUTCString());
           })
@@ -47,7 +46,7 @@ export default function Trends(props: any) {
     useEffect(() => {
         setSelectedOptions([]);
         setOptions(getOptions());
-    }, [props.category])
+    }, [data, props.category])
 
     function getOptions() {
         if(data) {

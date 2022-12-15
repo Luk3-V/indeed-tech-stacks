@@ -1,19 +1,6 @@
-import fromnow from 'fromnow';
-import React from 'react'
+import { CATEGORIES, COUNTRIES } from '../data';
 import Select from './Select'
 import Toggle from './Toggle'
-
-const CATEGORIES = [
-    {value: "frameworks", name: "🧱 Frameworks"},
-    {value: "languages", name: "📖 Languages"},
-    {value: "tools", name: "🛠️ Tools"},
-    {value: "jobtitles", name: "💼 Job Titles"},
-  ];
-  
-  const COUNTRIES = [
-    {value: "us", name: "🇺🇸 US"},
-    {value: "uk", name: "🇬🇧 UK"}
-  ];
 
 export default function Header(props: any) {
   return (

@@ -2,20 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { BarLoader } from 'react-spinners';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { ThemeContext } from '../App';
-
-interface Keyword {
-  name: string,
-  count: number
-}
-interface Data {
-  date: Date,
-  'us': {
-    [key: string]: Keyword[]
-  },
-  'uk': {
-    [key: string]: Keyword[]
-  }
-}
+import { Data } from '../data';
 
 const COLORS = ["#3b82f6", "#ef4444", "#22c55e"];
 
@@ -33,7 +20,6 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export default function TrendChart(props: any) {
-  //const [height, setHeight] = useState(40*props.data?.length);
   const [data, setData] = useState<Data[]>([]);
   const theme = useContext(ThemeContext);
 

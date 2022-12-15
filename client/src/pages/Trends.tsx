@@ -2,26 +2,7 @@ import fromnow from 'fromnow';
 import React, { useEffect, useState } from 'react'
 import MultiSelect from '../components/MultiSelect';
 import TrendChart from '../components/TrendChart'
-
-interface Keyword {
-    name: string,
-    count: number
-}
-interface Data {
-    date: Date,
-    'us': {
-      frameworks: Keyword[],
-      languages: Keyword[],
-      tools: Keyword[],
-      jobtitles: Keyword[],
-    },
-    'uk': {
-      frameworks: Keyword[],
-      languages: Keyword[],
-      tools: Keyword[],
-      jobtitles: Keyword[],
-    }
-}
+import { Data, Keyword } from '../data';
 
 export default function Trends(props: any) {
     const [loading, setLoading] = useState<boolean>(true);

@@ -1,26 +1,7 @@
 import fromnow from 'fromnow';
 import React, { useEffect, useState } from 'react'
 import RankingChart from '../components/RankingChart'
-
-interface Keyword {
-    name: string,
-    count: number
-}
-interface Data {
-    date: Date,
-    'us': {
-      frameworks: Keyword[],
-      languages: Keyword[],
-      tools: Keyword[],
-      jobtitles: Keyword[],
-    },
-    'uk': {
-      frameworks: Keyword[],
-      languages: Keyword[],
-      tools: Keyword[],
-      jobtitles: Keyword[],
-    }
-}
+import { Data } from '../data';
 
 export default function Rankings(props: any) {
     const [loading, setLoading] = useState<boolean>(true);

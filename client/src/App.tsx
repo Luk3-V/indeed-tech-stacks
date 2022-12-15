@@ -1,18 +1,11 @@
-import fromnow from 'fromnow';
 import React, { createContext, useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Outlet, Navigate } from "react-router-dom";
-import { BarChart, XAxis, YAxis, Tooltip, Legend, Bar, LabelList } from 'recharts';
-import RankingChart from './components/RankingChart';
-import Button from './components/Button';
-import Select from './components/Select';
-import Toggle from './components/Toggle';
 import ReactGA from 'react-ga4';
 import Rankings from './pages/Rankings';
 import Trends from './pages/Trends';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Nav from './components/Nav';
-
 
 export const ThemeContext = createContext(false);
 

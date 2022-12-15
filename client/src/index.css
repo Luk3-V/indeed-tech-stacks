@@ -5,10 +5,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&display=swap');
 
 body {
+    --bgColor: #fafafa;
+    --color: #171717;
     background-color: #fafafa;
     color: #171717;
 }
 body.dark {
+    --bgColor: #0f172a;
+    --color: #fafafa;
     background-color: #0f172a;
     color: #fafafa;
 }

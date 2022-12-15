@@ -6,7 +6,7 @@ import { ThemeContext } from '../App';
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-gray-900 rounded-sm text-white p-2 px-3 bg-opacity-70">
+      <div className="bg-zinc-900 rounded-sm text-white p-2 px-3 bg-opacity-70 backdrop-blur-sm">
         <p>{label}</p>
         <p><span className='inline-block h-3 w-3 bg-blue-500 mr-2'></span>{`${payload[0].value} Jobs`}</p>
       </div>
@@ -38,7 +38,7 @@ export default function RankingChart(props: any) {
   }, [props]);
 
   return (
-    <div className='w-full px-3 md:px-10 py-10 font-mono'>
+    <div className='w-full py-10 font-mono'>
         <h2 className='text-2xl font-semibold mb-3'>{props.title}:</h2>
         
         {props.loading && <BarLoader className="mx-auto" color="#3B82F6" width={200}/> }

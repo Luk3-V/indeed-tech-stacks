@@ -4,17 +4,17 @@ const IndeedCount = require('../models/IndeedCount');
 const IndeedScraperLite = require('../lib/indeedScraperLite');
 
 // GET all data
-router.get('/', async (req, res) => {
-    try {
-        const allData = await IndeedCount.find();
-        res.json(allData);
-    } catch (error) {
-        res.status(500).json({ message: error.message }); // 500 = Server error
-    }
+router.get('/', getAllData, (req, res) => {
+    res.json(res.data);
 });
 
 // GET data by date (YYYY-MM-DD) OR by "newest"
 router.get('/:date', getData, (req, res) => {
+    res.json(res.data);
+});
+
+// GET trends by
+router.get('/trends', getAllData, (req, res) => {
     res.json(res.data);
 });
 
@@ -69,6 +69,15 @@ async function getData(req, res, next) {
 
     res.data = data[0];
     next();
+}
+
+async function getAllData(req, res, next) {
+    try {
+        const allData = await IndeedCount.find();
+        res.json(allData);
+    } catch (error) {
+        res.status(500).json({ message: error.message }); // 500 = Server error
+    }
 }
 
 module.exports = router;

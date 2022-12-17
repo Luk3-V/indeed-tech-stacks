@@ -8,7 +8,7 @@ export default function Trends(props: any) {
     const [loading, setLoading] = useState<boolean>(true);
     const [data, setData] = useState<Data[]>();
     const [options, setOptions] = useState<Keyword[]>([]);
-    const [selectedOptions, setSelectedOptions] = useState([]);
+    const [selectedOptions, setSelectedOptions] = useState<Keyword[]>([]);
     const dataUrl = import.meta.env.VITE_API_URL;
 
     useEffect(() => {
@@ -27,22 +27,22 @@ export default function Trends(props: any) {
     useEffect(() => {
         setSelectedOptions([]);
         setOptions(getOptions());
-    }, [data, props.category])
+    }, [data, props.category]);
 
     function getOptions() {
         if(data) {
             switch(props.category) {
                 case "frameworks":
                     console.log("frames");
-                    return data[0].us.frameworks;
+                    return data[data.length-1].us.frameworks;
                 case "languages":
-                    return data[0].us.languages;
+                    return data[data.length-1].us.languages;
                 case "tools":
-                    return data[0].us.tools;
+                    return data[data.length-1].us.tools;
                 case "jobtitles":
-                    return data[0].us.jobtitles;
+                    return data[data.length-1].us.jobtitles;
                 default:
-                    return data[0].us.frameworks;
+                    return data[data.length-1].us.frameworks;
             } 
         }
         console.log("nope");
@@ -59,10 +59,10 @@ export default function Trends(props: any) {
             </div>
 
             <div className="flex max-w-5xl mx-auto">
-                {props.category==="frameworks" && <TrendChart title="Framework Trends" data={data} loading={loading} country={props.country} category={props.category} selectedOptions={selectedOptions}/>}
-                {props.category==="languages" && <TrendChart title="Language Trends" data={data} loading={loading} country={props.country} category={props.category} selectedOptions={selectedOptions}/>}
-                {props.category==="tools" && <TrendChart title="Tool Trends" data={data} loading={loading} country={props.country} category={props.category} selectedOptions={selectedOptions}/>}
-                {props.category==="jobtitles" && <TrendChart title="Job Title Trends" data={data} loading={loading} country={props.country} category={props.category} selectedOptions={selectedOptions}/>}
+                {props.category==="frameworks" && <TrendChart title="Framework Trends (all-time)" data={data} loading={loading} country={props.country} category={props.category} selectedOptions={selectedOptions}/>}
+                {props.category==="languages" && <TrendChart title="Language Trends (all-time)" data={data} loading={loading} country={props.country} category={props.category} selectedOptions={selectedOptions}/>}
+                {props.category==="tools" && <TrendChart title="Tool Trends (all-time)" data={data} loading={loading} country={props.country} category={props.category} selectedOptions={selectedOptions}/>}
+                {props.category==="jobtitles" && <TrendChart title="Job Title Trends (all-time)" data={data} loading={loading} country={props.country} category={props.category} selectedOptions={selectedOptions}/>}
             </div>
 
         </>

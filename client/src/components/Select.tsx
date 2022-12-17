@@ -25,7 +25,7 @@ export default function Select(props: any) {
               'px-2',
           multiValueRemove: () =>
               'px-1 hover:bg-red-600 hover:bg-opacity-60',
-          valueContainer: () => 'mr-3'
+          valueContainer: () => props.minWidth ? 'mr-3 min-w-[140px]' : 'mr-3'
       }}
       />
     </div>

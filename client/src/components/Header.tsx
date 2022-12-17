@@ -6,7 +6,7 @@ export default function Header(props: any) {
   return (
     <>
         <div className="pt-8 pb-5 flex justify-between">
-            <h1 className="inline-block text-3xl font-bold self-center mr-1">Indeed Tech Stacks <span className='text-gray-400 dark:text-gray-500 text-2xl'>[v0.3]</span></h1>
+            <h1 className="inline-block text-3xl font-bold self-center mr-2">Indeed Tech Stacks <span className='text-gray-400 dark:text-gray-500 text-2xl'>[v0.3]</span></h1>
             <Toggle onClick={props.toggleTheme}/>
         </div>
 

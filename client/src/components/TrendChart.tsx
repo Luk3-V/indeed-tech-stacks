@@ -84,7 +84,7 @@ export default function TrendChart(props: any) {
         {(!props.loading && !props.data) && <p className='text-lg text-center'>😕 Uh oh, missing data...</p>}
         {props.data && 
         <ResponsiveContainer width='98%' height={320} debounce={20}>
-          <LineChart margin={{ top: 5, right: 40, left: 5, bottom: 5 }}
+          <LineChart margin={{ top: 5, right: 30, left: 5, bottom: 5 }}
               data={data}
           >
               <CartesianGrid stroke={theme ? "#334155" : '#e2e8f0'} />

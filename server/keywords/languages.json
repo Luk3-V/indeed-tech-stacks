@@ -46,11 +46,11 @@
     },
     {
         "name": "Ruby",
-        "aliases": ["Ruby Developer"]
+        "aliases": ["Ruby Programming"]
     },
     {
         "name": "Rust",
-        "aliases": ["Rust Developer"]
+        "aliases": ["Rust Programmer"]
     },
     {
         "name": "Objective-C",
@@ -62,14 +62,10 @@
     },
     {
         "name": "Scala",
-        "aliases": ["Scala Developer"]
+        "aliases": ["Scala"]
     },
     {
         "name": "Perl",
         "aliases": ["Perl"]
-    },
-    {
-        "name": "Shell",
-        "aliases": ["PowerShell"]
     }
 ]

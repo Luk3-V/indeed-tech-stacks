@@ -62,8 +62,11 @@ async function getAllJobCounts(keywords, prefix) {
 				let { jobCount } = parser.getContent();
 				
 				let result = parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",",""));
-				if(result >= 0)
-					count += result
+				if(result >= 0) {
+					if(count < result) {
+						count = result;
+					}	
+				}
 				else
 					console.log("ERROR: SCRAPED A NaN");
 					

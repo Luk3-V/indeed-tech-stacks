@@ -26,12 +26,12 @@
     },
     {
         "name": "React",
-        "aliases": ["ReactJS"],
+        "aliases": ["React"],
         "language": "JavaScript"
     },
     {
         "name": "Angular",
-        "aliases": ["AngularJS"],
+        "aliases": ["Angular"],
         "language": "JavaScript"
     },
     {
@@ -46,7 +46,7 @@
     },
     {
         "name": "React Native",
-        "aliases": ["React Native"],
+        "aliases": ["React Native", "React Native Mobile"],
         "language": "JavaScript"
     },
     {
@@ -65,6 +65,11 @@
         "language": "JavaScript"
     },
     {
+        "name": "Spring",
+        "aliases": ["Spring Java"],
+        "language": "Java"
+    },
+    {
         "name": ".Net",
         "aliases": [".Net"],
         "language": "C#"
@@ -74,18 +79,28 @@
         "aliases": ["Flutter"],
         "language": "Dart"
     },
+    {
+        "name": "Django",
+        "aliases": ["Django Python"],
+        "language": "Python"
+    },
+    {
+        "name": "Flask",
+        "aliases": ["Flask Python"],
+        "language": "Python"
+    },
     
 
 
     {
         "name": "Next",
-        "aliases": ["NextJS", "Next.js"],
+        "aliases": ["NextJS", "Next.js", "Next JS"],
         "language": "JavaScript",
         "for": "React"
     },
     {
         "name": "Express",
-        "aliases": ["ExpressJS"],
+        "aliases": ["ExpressJS", "Express.js", "Express JS"],
         "language": "JavaScript",
         "for": "Node"
     }

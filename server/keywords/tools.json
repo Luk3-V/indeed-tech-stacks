@@ -1,7 +1,7 @@
 [
     {
         "name": "Node.js",
-        "aliases": ["NodeJS"]
+        "aliases": ["NodeJS", "Node.js", "Node JS"]
     },
     {
         "name": "MongoDB",
@@ -30,5 +30,21 @@
     {
         "name": "Jenkins",
         "aliases": ["Jenkins"]
+    },
+    {
+        "name": "AWS",
+        "aliases": ["AWS"]
+    },
+    {
+        "name": "Redis",
+        "aliases": ["Redis"]
+    },
+    {
+        "name": "Salesforce",
+        "aliases": ["Salesforce"]
+    },
+    {
+        "name": "Kubernetes",
+        "aliases": ["Kubernetes"]
     }
 ]

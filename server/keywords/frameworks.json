@@ -1,7 +1,12 @@
 [
     {
         "name": "Django",
-        "aliases": ["Django"],
+        "aliases": ["Django Python"],
+        "language": "Python"
+    },
+    {
+        "name": "Flask",
+        "aliases": ["Flask Python"],
         "language": "Python"
     },
     {
@@ -79,17 +84,6 @@
         "aliases": ["Flutter"],
         "language": "Dart"
     },
-    {
-        "name": "Django",
-        "aliases": ["Django Python"],
-        "language": "Python"
-    },
-    {
-        "name": "Flask",
-        "aliases": ["Flask Python"],
-        "language": "Python"
-    },
-    
 
 
     {

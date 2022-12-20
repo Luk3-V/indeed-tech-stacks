@@ -43,9 +43,9 @@ async function getAllJobCounts(keywords, prefix) {
 	let requests = 0;
 	let result = [];
 	for(i in keywords) {
-		if(requests >= 5) { // Prevent bot detection
-			console.log('WAITING 30 SECS');
-			await sleep(30000);
+		if(requests >= 4) { // Prevent bot detection
+			console.log('WAITING 40 SECS');
+			await sleep(40000);
 			requests = 0;
 		}
 

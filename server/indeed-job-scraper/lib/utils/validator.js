@@ -3,25 +3,17 @@ function isValueInt(value) {
 	return (new RegExp("^[0-9]+$")).test(value);	
 }
 
-//-----------------------------------------------------------------------------
-
 function isValueSalary(value) {
 	return (new RegExp("^[0-9]+[kK]?( *- *[0-9]+[kK]?)?$")).test(value);
 }
-
-//-----------------------------------------------------------------------------
 
 function isValueIn(value , arr) {
 	return arr.indexOf(value) !== -1;
 }
 
-//-----------------------------------------------------------------------------
-
 function isValueEmpty(value) {
 	return value.length === 0; 
 }
-
-//-----------------------------------------------------------------------------
 
 function filterParams(params) {
 	let dict = {
@@ -51,8 +43,6 @@ function filterParams(params) {
 	}
 	return filtered;
 }
-
-//-----------------------------------------------------------------------------
 
 function checkParamValue(filtered) {
 	for(key in filtered) {

@@ -3,6 +3,8 @@ const router = express.Router();
 const IndeedCount = require('../models/IndeedCount');
 const IndeedScraperLite = require('../lib/indeedScraperLite');
 
+// ---------------------------------------------------------------------
+
 // GET all data
 router.get('/', getAllData, (req, res) => {
     res.json(res.data);
@@ -79,5 +81,7 @@ async function getAllData(req, res, next) {
         res.status(500).json({ message: error.message }); // 500 = Server error
     }
 }
+
+// --------------------------------------------------------------------
 
 module.exports = router;

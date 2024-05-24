@@ -8,8 +8,6 @@ function JobInfoParser(content) {
 	this.$ = cheerio.load(content);
 }
 
-//-----------------------------------------------------------------------------
-
 JobInfoParser.prototype.getContent = function() {
 	let job = {};
 

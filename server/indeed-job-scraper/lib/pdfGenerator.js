@@ -5,14 +5,18 @@ let BrowserPage = require("./browser.js");
 let temp        = require("tmp");
 let URL         = require("url").URL;
 
-
 //---------------------------------------------------------------------------------------
+
+function PdfGenerator(jobs) {
+	this.jobs      = jobs;
+	this.$		   = cheerio.load(this.readHTMLTemplate())
+	this.container = this.$("div.container");
+	this.page      = new BrowserPage();
+}
 
 PdfGenerator.prototype.readHTMLTemplate = function() {
 	return fs.readFileSync(path.join(__dirname , "../template/file.html") , "utf8");
 }
-
-//---------------------------------------------------------------------------------------
 
 PdfGenerator.prototype.writeJobsIntoTable = function() {
 	let counter = 1;
@@ -31,9 +35,6 @@ PdfGenerator.prototype.writeJobsIntoTable = function() {
 	})
 }
 
-
-//---------------------------------------------------------------------------------------
-
 PdfGenerator.prototype.writeTempHTML = function() {
 	this.writeJobsIntoTable();
 	let content = this.$.html() , tempHTMLpath = temp.fileSync().name + ".html";
@@ -41,21 +42,9 @@ PdfGenerator.prototype.writeTempHTML = function() {
 	return tempHTMLpath;
 }
 
-//---------------------------------------------------------------------------------------
-
 PdfGenerator.prototype.generatePDF = function() {
 	let tempHTMLpath = this.writeTempHTML();
 	return this.page.exportPDF((new URL(tempHTMLpath , "file://")));
-}
-
-//---------------------------------------------------------------------------------------
-
-function PdfGenerator(jobs) {
-	this.jobs      = jobs;
-	this.$		   = cheerio.load(this.readHTMLTemplate())
-	this.container = this.$("div.container");
-	this.page      = new BrowserPage();
-
 }
 
 //---------------------------------------------------------------------------------------

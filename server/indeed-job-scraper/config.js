@@ -31,8 +31,6 @@ const defaults = {
 	"verbose"   : true
 }
 
-//-----------------------------------------------------------------------------
-
 let config = {
 	get ["job-cards"]() {
 		return defaults["scrape"]["job-cards"]

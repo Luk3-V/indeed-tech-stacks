@@ -9,32 +9,30 @@ const JobInfoParser = require("./lib/job-info-parser.js");
 //-----------------------------------------------------------------------------
 
 function getJobCount(params) {
-	let page  = new BrowserPage();
-	params    = checkParamValue(filterParams(params));
-	let url = new URL("jobs" , config["base-URL"]);
+    let page  = new BrowserPage();
+    params    = checkParamValue(filterParams(params));
+    let url = new URL("jobs" , config["base-URL"]);
 
-	let content = (async () => {
-		try {
-			return await page.getContent(url, params);
-		}
-		catch (err) {
-			console.error(err);
-			return null;
-		}
-	})();
+    let content = (async () => {
+        try {
+            return await page.getContent(url, params);
+        }
+        catch (err) {
+            console.error(err);
+            return null;
+        }
+    })();
 
-	return content.then(async (content) => {
-		if(!content)
-			return 0;
-		if(config["verbose"]) console.log("\u2714" , url.href);
-		let parser = new PageParser(content);
-		let { jobCount } = parser.getContent();
-		console.log(jobCount);
-		return page.closePage().then(() => parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",","")));
-	});
+    return content.then(async (content) => {
+        if(!content)
+            return 0;
+        if(config["verbose"]) console.log("\u2714" , url.href);
+        let parser = new PageParser(content);
+        let { jobCount } = parser.getPageData();
+        console.log(jobCount);
+        return page.closePage().then(() => parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",","")));
+    });
 }
-
-//-----------------------------------------------------------------------------
 
 async function getAllJobCounts(keywords, prefix) {
 	let page  = new BrowserPage();
@@ -59,7 +57,7 @@ async function getAllJobCounts(keywords, prefix) {
 				
 				if(config["verbose"]) console.log("\u2714" , url.href);
 				let parser = new PageParser(content);
-				let { jobCount } = parser.getContent();
+				let { jobCount } = parser.getPageData();
 				
 				let result = parseInt(jobCount.substring(0, jobCount.indexOf(" ")).replace(",",""));
 				if(result >= 0) {
@@ -84,33 +82,30 @@ async function getAllJobCounts(keywords, prefix) {
 	return page.closePage().then(() => result);
 }
 
-//-----------------------------------------------------------------------------
-
 function getJobsList(params) {
-	let page  = new BrowserPage();
-	params    = checkParamValue(filterParams(params));
-	let limit = config["max-pages"];
+    let page = new BrowserPage();
+    params = checkParamValue(filterParams(params));
+    let limit = config["max-pages"];
 
-	let jobs  = (function _getJobsList(params , jobs = []) {
-		if(limit-- === 0) return Promise.resolve(jobs);
-		let url = new URL("jobs" , config["base-URL"]);
+    // Recursively fetches job listings from multiple pages.
+    let jobs = (function _getJobsList(params, jobs = []) {
+        if (limit-- === 0) return Promise.resolve(jobs);
+        let url = new URL("jobs", config["base-URL"]);
 
-		return page.getContent(url, params).then((content) => {
-			if(config["verbose"]) console.log("\u2714" , url.href);
-			let parser = new PageParser(content);
-			let { pageJobs , nextLink } = parser.getContent();
-			jobs = jobs.concat(pageJobs);
-			if(nextLink === null) return jobs;
-			else return _getJobsList(parse(nextLink , true)["query"] , jobs);
-		})
-	})(params , []);
+        return page.getContent(url, params).then((content) => {
+            if (config["verbose"]) console.log("\u2714", url.href);
+            let parser = new PageParser(content);
+            let { pageJobs, nextLink } = parser.getPageData();
+            jobs = jobs.concat(pageJobs);
+            if (nextLink === null) return jobs;
+            else return _getJobsList(parse(nextLink, true)["query"], jobs);
+        });
+    })(params, []);
 
-	return jobs.then((jobs) => {
-		return page.closePage().then(() => jobs);
-	});
+    return jobs.then((jobs) => {
+        return page.closePage().then(() => jobs);
+    });
 }
-
-// ----------------------------------------------------------------------------
 
 function getJobInfo(url) {
 	let page    = new BrowserPage();
@@ -118,15 +113,13 @@ function getJobInfo(url) {
 
 	let job     = page.getContent(url, params).then((content) => {
 		let parser = new JobInfoParser(content);
-		return parser.getContent();
+		return parser.getPageData();
 	});
 
 	return job.then((job) => {
 		return page.closePage().then(() => job);
 	});
 }
-
-//-----------------------------------------------------------------------------
 
 function getJobsPDF(params) {
 	return getJobsList(params).then((jobs) => {

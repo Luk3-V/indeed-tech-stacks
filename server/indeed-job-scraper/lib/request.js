@@ -7,13 +7,6 @@ puppeteer.use(StealthPlugin());
 
 //-----------------------------------------------------------------------------
 
-function buildURL(url, params={}) {
-    Object.getOwnPropertyNames(params).forEach((key) => url.searchParams.append(key, params[key]));
-	return url.href;
-}
-
-//-----------------------------------------------------------------------------
-
 function Browser() {
 	this.browser = null;
 	this.page    = null;
@@ -22,14 +15,10 @@ function Browser() {
 	this.init();
 }
 
-//-----------------------------------------------------------------------------
-
 Browser.prototype.init = function() {
 	this.browser = puppeteer.launch({ headless: true })
 	this.page    = this.browser.then((browser) => browser.newPage());
 }
-
-//-----------------------------------------------------------------------------
 
 Browser.prototype.getContent = function(url, params) {
 	return this.page.then((page) => {
@@ -39,10 +28,15 @@ Browser.prototype.getContent = function(url, params) {
 	})
 }
 
-//-----------------------------------------------------------------------------
-
 Browser.prototype.release = function() {
 	return Promise.all(this.browser.then(browser => browser.close), this.page.then(page => close()));
+}
+
+//-----------------------------------------------------------------------------
+
+function buildURL(url, params={}) {
+    Object.getOwnPropertyNames(params).forEach((key) => url.searchParams.append(key, params[key]));
+	return url.href;
 }
 
 //-----------------------------------------------------------------------------

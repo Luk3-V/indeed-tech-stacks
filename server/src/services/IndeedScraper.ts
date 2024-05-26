@@ -1,12 +1,14 @@
-const scraper = require('../indeed-job-scraper/index.js');
+import { Keyword } from '../keywords/keyword';
+import { getAllJobCounts, getJobCount } from './indeed-job-scraper';
 
-const FRAMEWORKS = require('../keywords/frameworks.json');
-const TOOLS = require('../keywords/tools.json');
-const LANGUAGES = require('../keywords/languages.json');
-const JOB_TITLES = require('../keywords/jobtitles.json');
+import FRAMEWORKS from '../keywords/frameworks.json';
+import TOOLS from '../keywords/tools.json';
+import LANGUAGES from '../keywords/languages.json';
+import JOB_TITLES from '../keywords/jobtitles.json';
 
+// --------------------------------------------------------------------
 
-async function getData(params) {
+export async function getScrapedData() {
     let data = {
         us: {
             frameworks: [],
@@ -23,14 +25,14 @@ async function getData(params) {
     };
 
     // ------- SLOW SCRAPER ---------
-    data.us.frameworks = await scraper.getAllJobCounts(FRAMEWORKS, 'www');
-    data.us.languages = await scraper.getAllJobCounts(LANGUAGES, 'www');
-    data.us.tools = await scraper.getAllJobCounts(TOOLS, 'www');
-    data.us.jobtitles = await scraper.getAllJobCounts(JOB_TITLES, 'www');
-    data.uk.frameworks = await scraper.getAllJobCounts(FRAMEWORKS, 'uk');
-    data.uk.languages = await scraper.getAllJobCounts(LANGUAGES, 'uk');
-    data.uk.tools = await scraper.getAllJobCounts(TOOLS, 'uk');
-    data.uk.jobtitles = await scraper.getAllJobCounts(JOB_TITLES, 'uk');
+    data.us.frameworks = await getAllJobCounts(FRAMEWORKS, 'www');
+    data.us.languages = await getAllJobCounts(LANGUAGES, 'www');
+    data.us.tools = await getAllJobCounts(TOOLS, 'www');
+    data.us.jobtitles = await getAllJobCounts(JOB_TITLES, 'www');
+    data.uk.frameworks = await getAllJobCounts(FRAMEWORKS, 'uk');
+    data.uk.languages = await getAllJobCounts(LANGUAGES, 'uk');
+    data.uk.tools = await getAllJobCounts(TOOLS, 'uk');
+    data.uk.jobtitles = await getAllJobCounts(JOB_TITLES, 'uk');
 
     // --------- CHUNKED PARALLEL SCRAPER ---------
     // let CHUNK_SIZE = 5;
@@ -72,13 +74,11 @@ async function getData(params) {
     return data;
 }
 
-async function getCount(word, params) {
+async function getCount(keyword: Keyword) {
     let count = 0;
-    console.log(word.name);
-    for(i in word.aliases)
-        count += await scraper.getJobCount({ query: word.aliases[i] });
+    console.log(keyword.name);
+    for(let i in keyword.aliases)
+        count += await getJobCount({ query: keyword.aliases[i] });
 
-    return {name: word.name, count: count};
+    return {name: keyword.name, count: count};
 }
-
-module.exports = {getData};

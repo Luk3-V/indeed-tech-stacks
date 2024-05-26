@@ -1,22 +1,25 @@
+import { Params, Dict } from "../../indeedScraper";
 
-function isValueInt(value) {
+function isValueInt(value: string): boolean {
 	return (new RegExp("^[0-9]+$")).test(value);	
 }
 
-function isValueSalary(value) {
+function isValueSalary(value: string): boolean {
 	return (new RegExp("^[0-9]+[kK]?( *- *[0-9]+[kK]?)?$")).test(value);
 }
 
-function isValueIn(value , arr) {
+function isValueIn(value: string, arr: string[]): boolean {
 	return arr.indexOf(value) !== -1;
 }
 
-function isValueEmpty(value) {
+function isValueEmpty(value: string) {
 	return value.length === 0; 
 }
 
-function filterParams(params) {
-	let dict = {
+// -----------------------------------------------------------------------------
+
+export function filterParams(params: Params): Params {
+	let dict: Dict = {
 		query 		 : "q",
 		hiretype  	 : "sr",
 		level		 : "explvl",
@@ -33,7 +36,7 @@ function filterParams(params) {
 	Object.setPrototypeOf(dict , null);
 	if(params === null || typeof params !== "object") throw new Error("params object should be an object");
 
-	let filtered = {};
+	let filtered: Params = {};
 	for(let key in params) {
 		if(typeof key !== "string") continue;
 		let newKey = key.toLowerCase().trim();
@@ -44,8 +47,8 @@ function filterParams(params) {
 	return filtered;
 }
 
-function checkParamValue(filtered) {
-	for(key in filtered) {
+export function checkParamValue(filtered: Params): Params {
+	for(let key in filtered) {
 		let value = filtered[key];
 		switch(key) {
 			case "q" :
@@ -92,8 +95,3 @@ function checkParamValue(filtered) {
 	}
 	return filtered;
 }
-
-//-----------------------------------------------------------------------------
-
-module.exports.filterParams    = filterParams;
-module.exports.checkParamValue = checkParamValue;

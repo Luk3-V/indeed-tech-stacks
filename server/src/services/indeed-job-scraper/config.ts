@@ -1,4 +1,4 @@
-let URL = require("url").URL;
+import { URL } from "url";
 
 //-----------------------------------------------------------------------------
 
@@ -31,7 +31,7 @@ const defaults = {
 	"verbose"   : true
 }
 
-let config = {
+export let config = {
 	get ["job-cards"]() {
 		return defaults["scrape"]["job-cards"]
 	} ,
@@ -73,7 +73,7 @@ let config = {
 	} ,
 	set ["max-pages"](maxPages) {
 		let n = Number.parseInt(maxPages + "");
-		if(!isNaN(n) && isFinite(n) && n >= 0) return defaults["max-pages"] = n;
+		if(!isNaN(n) && isFinite(n) && n >= 0) defaults["max-pages"] = n;
 		throw new Error("maxPages should be a positive number or convertable to a positive number");
 	} ,
 	set ["verbose"](verbose) {
@@ -81,7 +81,7 @@ let config = {
 	} ,
 }
 
-let jobConfig = {
+export let jobConfig = {
 	get ["job-title"]() {
 		return defaults["job-scrape"]["job-title"]
 	},
@@ -119,8 +119,3 @@ let jobConfig = {
 		defaults["base-URL"] = (new URL(baseURL)).href;
 	},
 }
-
-//-----------------------------------------------------------------------------
-
-module.exports = config;
-module.exports.jobConfig = jobConfig;

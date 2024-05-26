@@ -49,4 +49,4 @@ PdfGenerator.prototype.generatePDF = function() {
 
 //---------------------------------------------------------------------------------------
 
-module.exports = PdfGenerator;
+export default PdfGenerator;

@@ -1,6 +1,27 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const IndeedSchema = new mongoose.Schema({
+export interface IndeedKeywordData {
+    name: string;
+    count: number;
+}
+
+export interface IndeedCountDocument extends mongoose.Document {
+    date: Date;
+    us: {
+        frameworks: Array<IndeedKeywordData>;
+        languages: Array<IndeedKeywordData>;
+        tools: Array<IndeedKeywordData>;
+        jobtitles: Array<IndeedKeywordData>;
+    };
+    uk: {
+        frameworks: Array<IndeedKeywordData>;
+        languages: Array<IndeedKeywordData>;
+        tools: Array<IndeedKeywordData>;
+        jobtitles: Array<IndeedKeywordData>;
+    };
+}
+
+const IndeedCountSchema = new mongoose.Schema({
     date: {
         type: Date,
         required: true,
@@ -68,4 +89,5 @@ const IndeedSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('indeed-count', IndeedSchema);
+const IndeedCount = mongoose.model<IndeedCountDocument>("indeed-count", IndeedCountSchema);
+export default IndeedCount;

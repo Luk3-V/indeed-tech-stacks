@@ -1,9 +1,9 @@
-const { getJobsList, getJobInfo, getJobsPDF, release, config } = require('../indeed-job-scraper/index');
+import { getJobsList, getJobInfo, getJobsPDF, release, config } from './indeed-job-scraper';
 
-const FRAMEWORKS = require('../keywords/frameworks.json');
-const TOOLS = require('../keywords/tools.json');
-const LANGUAGES = require('../keywords/languages.json');
-const LIBRARIES = require('../keywords/libraries.json');
+import FRAMEWORKS from '../keywords/frameworks.json';
+import TOOLS from '../keywords/tools.json';
+import LANGUAGES from '../keywords/languages.json';
+import JOB_TITLES from '../keywords/jobtitles.json';
 
 
 async function getKeywordData(params) {

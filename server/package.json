@@ -2,8 +2,10 @@
 	"name": "server",
 	"description": "",
 	"version": "1.0.0",
+	"main": "./dist/server.js",
 	"scripts": {
-		"start": "node ./src/server.ts",
+		"build": "npx tsc",
+    	"start": "node ./dist/server.js",
 		"dev": "nodemon ./src/server.ts"
 	},
 	"dependencies": {

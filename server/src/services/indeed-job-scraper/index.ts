@@ -5,7 +5,6 @@ import PageParser from "./lib/pageParser";
 import BrowserPage from "./lib/browser";
 import { filterParams , checkParamValue } from "./lib/utils/validator";
 import { config } from "./config";
-import PdfGenerator from "./lib/pdfGenerator";
 import JobInfoParser from "./lib/jobInfoParser";
 import { Params } from './indeedScraper';
 
